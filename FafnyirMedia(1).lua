@@ -31,3 +31,5 @@ LSM:Register ("statusbar", "- Gradient", [[Interface\Addons\FafnyirMedia\statusb
 LSM:Register ("statusbar", "- Gradient Left", [[Interface\Addons\FafnyirMedia\statusbar\Gradient_L.tga]])
 LSM:Register ("statusbar", "- Gradient Right", [[Interface\Addons\FafnyirMedia\statusbar\Gradient_R.tga]])
 LSM:Register ("statusbar", "- Clean", [[Interface\Addons\FafnyirMedia\statusbar\Clean.tga]])
+LSM:Register ("statusbar", "- CastBar", [[Interface\Addons\FafnyirMedia\statusbar\CastBar.tga]])
+LSM:Register ("statusbar", "- Neon", [[Interface\Addons\FafnyirMedia\statusbar\SFNeon.tga]])
