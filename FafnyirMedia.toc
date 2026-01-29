@@ -4,6 +4,7 @@
 ## Notes: Media used by Fafnyir
 ## Author: Fafnyir
 ## IconTexture: Interface\AddOns\FafnyirMedia\logo\AddonLogo
+## Version: 1.0.0
 ## X-Wago-ID: rNkPBe6a
 
 libs\LibStub\LibStub.lua
