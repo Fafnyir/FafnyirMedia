@@ -1,0 +1,13 @@
+## Interface: 120000
+
+## Title: |cFFFFFFFFFafnyir Media|r
+## Notes: Media used by Fafnyir
+## Author: Fafnyir
+## IconTexture: Interface\AddOns\FafnyirMedia\logo\AddonLogo
+## X-Wago-ID: rNkPBe6a
+
+libs\LibStub\LibStub.lua
+libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
+
+embeds.xml
+FafnyirMedia.lua
