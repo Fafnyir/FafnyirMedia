@@ -16,7 +16,7 @@ local LSM = LibStub("LibSharedMedia-3.0")
 -- -----
 
 LSM:Register("font", "- DAMAGE", [[Interface\Addons\FafnyirMedia\fonts\LuckiestGuy.ttf]])
-LSM:Register("font", "- GOTHAM", [[Interface\Addons\FafnyirMedia\fonts\Gotham_Narrow_Ultra.ttf]])
+LSM:Register("font", "- GOTHIC", [[Interface\Addons\FafnyirMedia\fonts\DidactGothic-Regular.ttf]])
 
 
 
