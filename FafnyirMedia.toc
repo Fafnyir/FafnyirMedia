@@ -3,7 +3,7 @@
 ## Notes: Media used by Fafnyir
 ## Author: Fafnyir
 ## IconTexture: Interface\AddOns\FafnyirMedia\logo\AddonLogo
-## Version: v1.0.6
+## Version: v1.0.7
 
 libs\LibStub\LibStub.lua
 libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
