@@ -1,7 +1,8 @@
 ## Interface: 120001, 120000
-## Title: |cFFFFFFFFFafnyir Media|r
+## Title: |cFF0070DDFafnyir|r Media
 ## Notes: Media used by Fafnyir
 ## Author: Fafnyir
+## Category-enUS: |cFF0070DDFafnyirs|r Hoard
 ## IconTexture: Interface\AddOns\FafnyirMedia\logo\AddonLogo
 ## Version: v1.0.7
 
