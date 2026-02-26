@@ -4,7 +4,7 @@
 ## Author: Fafnyir
 ## Category-enUS: |cFF0070DDFafnyirs|r |cFFFFFFFFHoard|r
 ## IconTexture: Interface\AddOns\FafnyirMedia\logo\AddonLogo
-## Version: v1.0.7
+## Version: v1.0.8
 
 libs\LibStub\LibStub.lua
 libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
