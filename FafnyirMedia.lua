@@ -34,3 +34,4 @@ LSM:Register ("statusbar", "- Flat", [[Interface\Addons\FafnyirMedia\statusbar\F
 LSM:Register ("statusbar", "- CastBar", [[Interface\Addons\FafnyirMedia\statusbar\CastBar.tga]])
 LSM:Register ("statusbar", "- Blizz", [[Interface\Addons\FafnyirMedia\statusbar\BlizzardCast.tga]])
 LSM:Register ("statusbar", "- FafnyirBar", [[Interface\Addons\FafnyirMedia\statusbar\FafnyirBar.tga]])
+LSM:Register ("statusbar", "- FafnyirGem", [[Interface\Addons\FafnyirMedia\statusbar\FafnyirGem.tga]])
