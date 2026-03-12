@@ -16,7 +16,10 @@ local LSM = LibStub("LibSharedMedia-3.0")
 -- -----
 
 LSM:Register("font", "- DAMAGE", [[Interface\Addons\FafnyirMedia\fonts\LuckiestGuy.ttf]])
-LSM:Register("font", "- THE FONT", [[Interface\Addons\FafnyirMedia\fonts\Afacad-Medium.ttf]])
+LSM:Register("font", "- THE BOLD FONT", [[Interface\Addons\FafnyirMedia\fonts\Fafnyir-Bold.ttf]])
+LSM:Register("font", "- THE LIGHT FONT", [[Interface\Addons\FafnyirMedia\fonts\Fafnyir-Light.ttf]])
+LSM:Register("font", "- THE MEDIUM FONT", [[Interface\Addons\FafnyirMedia\fonts\Fafnyir-Medium.ttf]])
+LSM:Register("font", "- THE FONT", [[Interface\Addons\FafnyirMedia\fonts\Fafnyir-Regular.ttf]])
 
 
 
