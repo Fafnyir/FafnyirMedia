@@ -5,6 +5,7 @@
 ## Category-enUS: |cFF6600CCFafnyirs|r |cFFFFFFFFHoard|r
 ## IconTexture: Interface\AddOns\FafnyirMedia\logo\AddonLogo
 ## Version: v1.0.9
+## X-Wago-ID: ZKxZmgNk
 
 libs\LibStub\LibStub.lua
 libs\CallbackHandler-1.0\CallbackHandler-1.0.lua
