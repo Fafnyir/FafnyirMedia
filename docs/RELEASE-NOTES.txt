@@ -1,4 +1,11 @@
-Fafnyir Media v1.1.0
+Fafnyir Media v1.1.1
 
-Fonts and textures for addons supporting LibSharedMedia.
-Imported unchanged from the supplied v1.1.0 archive.
+Register five bundled textures as LibSharedMedia backgrounds:
+- Arrow Glow
+- Combat
+- Tank
+- DPS
+- Healer
+
+Existing fonts and status bars remain unchanged. The addon logo remains unregistered.
+Offline validation passed; in-game verification is pending.

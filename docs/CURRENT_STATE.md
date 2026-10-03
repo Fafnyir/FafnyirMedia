@@ -9,4 +9,6 @@ Known baseline issue: embeds.xml declares xmlGUIS:xsi rather than xmlns:xsi. Ref
 
 Migration validation: exact baseline check and local package verification passed; GitHub validation run 37139879846 passed for commit e50e733. No new release was published.
 
-Development update: registered the five bundled arrow, combat, and role textures as LibSharedMedia backgrounds; the logo remains unregistered. There are now 15 registrations. Asset bytes and version v1.1.0 remain unchanged, but the edited Lua source no longer matches the original archive baseline. In-game verification remains pending.
+Development update: registered the five bundled arrow, combat, and role textures as LibSharedMedia backgrounds; the logo remains unregistered. There are now 15 registrations. Asset bytes remain unchanged, but the edited Lua source no longer matches the original archive baseline. In-game verification remains pending.
+
+Release preparation: user authorized v1.1.1 final on 2026-10-03. TOC, changelog, and release notes updated for GitHub and CurseForge publication.
