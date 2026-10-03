@@ -4,6 +4,12 @@ local LSM = LibStub("LibSharedMedia-3.0")
 -- BACKGROUND 
 -- ----- 
 
+LSM:Register("background", "- Arrow Glow", [[Interface\Addons\FafnyirMedia\Textures\arrow_glow.tga]])
+LSM:Register("background", "- Combat", [[Interface\Addons\FafnyirMedia\Textures\combat.tga]])
+LSM:Register("background", "- Tank", [[Interface\Addons\FafnyirMedia\Textures\Roles\Tank.tga]])
+LSM:Register("background", "- DPS", [[Interface\Addons\FafnyirMedia\Textures\Roles\DPS.tga]])
+LSM:Register("background", "- Healer", [[Interface\Addons\FafnyirMedia\Textures\Roles\Healer.tga]])
+
 
 -- ----- 
 --  MEDIA

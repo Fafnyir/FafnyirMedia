@@ -27,12 +27,12 @@ def check(baseline=False):
             if node.get('file'): reference(node.get('file'),path.parent)
     media=(ADDON/'FafnyirMedia.lua').read_text()
     assets=re.findall(r'\[\[Interface\\Addons\\FafnyirMedia\\([^\]]+)\]\]',media,re.I)
-    assert len(assets)==10, 'Review changed media registration inventory'
+    assert len(assets)==15, 'Review changed media registration inventory'
     for asset in assets: reference(asset)
     assert 'LICENSE' in files and 'fonts/LG - LICENSE.txt' in files, 'Missing licenses'
     if baseline:
         expected=json.loads((ROOT/'docs/baselines/v1.1.0.json').read_text())['files']
         actual={name:hashlib.sha256(path.read_bytes()).hexdigest() for name,path in files.items()}
         assert actual==expected, 'Addon differs from supplied v1.1.0 archive'
-    print(f'Passed: {len(files)} addon files, load paths, 10 media references, licenses, version {version.group(1)}'+(' and exact baseline' if baseline else ''))
+    print(f'Passed: {len(files)} addon files, load paths, {len(assets)} media references, licenses, version {version.group(1)}'+(' and exact baseline' if baseline else ''))
 if __name__=='__main__': check('--baseline' in sys.argv)

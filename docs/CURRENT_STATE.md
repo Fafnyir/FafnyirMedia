@@ -8,3 +8,5 @@ Release workflow active; CURSEFORGE_API_TOKEN repository secret presence verifie
 Known baseline issue: embeds.xml declares xmlGUIS:xsi rather than xmlns:xsi. Reference checks normalize this declaration in memory; the source remains untouched. In-game XML loading is unverified.
 
 Migration validation: exact baseline check and local package verification passed; GitHub validation run 37139879846 passed for commit e50e733. No new release was published.
+
+Development update: registered the five bundled arrow, combat, and role textures as LibSharedMedia backgrounds; the logo remains unregistered. There are now 15 registrations. Asset bytes and version v1.1.0 remain unchanged, but the edited Lua source no longer matches the original archive baseline. In-game verification remains pending.
