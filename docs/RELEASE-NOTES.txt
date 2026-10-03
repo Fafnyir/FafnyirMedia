@@ -1,0 +1,4 @@
+Fafnyir Media v1.1.0
+
+Fonts and textures for addons supporting LibSharedMedia.
+Imported unchanged from the supplied v1.1.0 archive.

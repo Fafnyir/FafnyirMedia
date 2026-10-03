@@ -1,0 +1,158 @@
+name: Build GitHub Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      confirm_version:
+        description: "Version in FafnyirMedia.toc (for example: v1.1.5)"
+        required: true
+        type: string
+      release_type:
+        description: "Release visibility"
+        required: true
+        default: draft
+        type: choice
+        options:
+          - draft
+          - prerelease
+          - final
+
+permissions:
+  contents: write
+
+concurrency:
+  group: fafnyirmedia-release
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Validate, package, and publish
+    runs-on: ubuntu-24.04
+
+    steps:
+      - name: Check out selected revision
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+
+      - name: Confirm addon version
+        id: version
+        env:
+          CONFIRMED_VERSION: ${{ inputs.confirm_version }}
+        run: |
+          version="$(sed -n 's/^## Version: //p' src/FafnyirMedia/FafnyirMedia.toc | tr -d '\r')"
+          if [ -z "$version" ]; then
+            echo "Unable to read the addon version from FafnyirMedia.toc." >&2
+            exit 1
+          fi
+          if [ "$version" != "$CONFIRMED_VERSION" ]; then
+            echo "Requested version $CONFIRMED_VERSION does not match TOC version $version." >&2
+            exit 1
+          fi
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          echo "tag=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Reject an existing release tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ steps.version.outputs.tag }}
+        run: |
+          if gh release view "$RELEASE_TAG" >/dev/null 2>&1; then
+            echo "GitHub Release $RELEASE_TAG already exists." >&2
+            exit 1
+          fi
+          if git rev-parse --verify --quiet "refs/tags/$RELEASE_TAG" >/dev/null; then
+            echo "Git tag $RELEASE_TAG already exists." >&2
+            exit 1
+          fi
+
+      - name: Check CurseForge credentials before publishing
+        if: ${{ inputs.release_type != 'draft' }}
+        env:
+          CURSEFORGE_API_TOKEN: ${{ secrets.CURSEFORGE_API_TOKEN }}
+        run: |
+          if [ -z "$CURSEFORGE_API_TOKEN" ]; then
+            echo "Configure CURSEFORGE_API_TOKEN before publishing." >&2
+            exit 1
+          fi
+
+      - name: Validate and package
+        run: python tools/package.py
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ steps.version.outputs.tag }}
+          ADDON_VERSION: ${{ steps.version.outputs.version }}
+          RELEASE_TYPE: ${{ inputs.release_type }}
+        run: |
+          extra_flag=""
+          if [ "$RELEASE_TYPE" = "draft" ]; then
+            extra_flag="--draft"
+          elif [ "$RELEASE_TYPE" = "prerelease" ]; then
+            extra_flag="--prerelease"
+          fi
+          gh release create "$RELEASE_TAG" \
+            dist/*.zip \
+            dist/*.build.json \
+            --target "$GITHUB_SHA" \
+            --title "Fafnyir Media $ADDON_VERSION" \
+            --notes-file docs/RELEASE-NOTES.txt \
+            $extra_flag
+
+      - name: Upload to CurseForge
+        if: ${{ inputs.release_type != 'draft' }}
+        env:
+          CURSEFORGE_API_TOKEN: ${{ secrets.CURSEFORGE_API_TOKEN }}
+          ADDON_VERSION: ${{ steps.version.outputs.version }}
+          RELEASE_TYPE: ${{ inputs.release_type }}
+        run: |
+          if [ -z "$CURSEFORGE_API_TOKEN" ]; then
+            echo "CURSEFORGE_API_TOKEN is not configured." >&2
+            exit 1
+          fi
+
+          curseforge_release_type="release"
+          if [ "$RELEASE_TYPE" = "prerelease" ]; then
+            curseforge_release_type="beta"
+          fi
+          export CURSEFORGE_RELEASE_TYPE="$curseforge_release_type"
+
+          artifact="$(find dist -maxdepth 1 -type f -name '*.zip' -print -quit)"
+          if [ -z "$artifact" ]; then
+            echo "Packaged ZIP was not found." >&2
+            exit 1
+          fi
+          artifact_name="$(basename "$artifact")"
+
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          metadata = {
+              "changelog": Path("docs/RELEASE-NOTES.txt").read_text(),
+              "changelogType": "text",
+              "displayName": f"Fafnyir Media {os.environ['ADDON_VERSION']}",
+              "gameVersionNames": [
+                  "12.1.0",
+                  "1.60.1",
+              ],
+              "releaseType": os.environ["CURSEFORGE_RELEASE_TYPE"],
+          }
+          Path("curseforge-metadata.json").write_text(json.dumps(metadata))
+          PY
+
+          response="$(curl --silent --show-error --fail-with-body \
+            --request POST \
+            --header "X-Api-Token: $CURSEFORGE_API_TOKEN" \
+            --form "metadata=<curseforge-metadata.json;type=application/json" \
+            --form "file=@$artifact;filename=$artifact_name;type=application/zip" \
+            "https://wow.curseforge.com/api/projects/1442918/upload-file")"
+          echo "$response" | python -c \
+            'import json, sys; result = json.load(sys.stdin); assert result.get("id"), result; print("CurseForge file ID: {}".format(result["id"]))'
