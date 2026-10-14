@@ -1,10 +1,10 @@
-## Interface: 120100, 16001
+## Interface: 120105, 16001
 ## Title: |cFF6600CCFafnyir Media|r
 ## Notes: Media used by Fafnyir
 ## Author: Fafnyir
 ## Category-enUS: |cFF6600CCFafnyirs|r |cFFFFFFFFHoard|r
 ## IconTexture: Interface\AddOns\FafnyirMedia\logo\AddonLogo
-## Version: v1.1.1
+## Version: v1.1.2
 ## X-Wago-ID: ZKxZmgNk
 
 libs\LibStub\LibStub.lua

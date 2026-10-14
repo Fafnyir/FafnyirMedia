@@ -1,11 +1,5 @@
-Fafnyir Media v1.1.1
+Fafnyir Media v1.1.2
 
-Register five bundled textures as LibSharedMedia backgrounds:
-- Arrow Glow
-- Combat
-- Tank
-- DPS
-- Healer
-
-Existing fonts and status bars remain unchanged. The addon logo remains unregistered.
-Offline validation passed; in-game verification is pending.
+Update Retail Interface metadata to 120105 (12.1.5).
+Preserve Forever Interface 16001 and all existing media.
+Offline validation passed; this metadata update has not been tested in-game.

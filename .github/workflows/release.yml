@@ -140,7 +140,7 @@ jobs:
               "changelogType": "text",
               "displayName": f"Fafnyir Media {os.environ['ADDON_VERSION']}",
               "gameVersionNames": [
-                  "12.1.0",
+                  "12.1.5",
                   "1.60.1",
               ],
               "releaseType": os.environ["CURSEFORGE_RELEASE_TYPE"],

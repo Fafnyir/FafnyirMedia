@@ -11,11 +11,13 @@ Run `python3 tools/check.py`. Use `--baseline` to compare every addon file with 
 
 ## Releases
 
+Use `FafnyirMedia_(version)_(commit).zip` for all test and release ZIP filenames, with the exact TOC version (including `v`) and the seven-character source commit hash. Example: `FafnyirMedia_v1.1.1_05eb40e.zip`. Preserve this filename when uploading release assets.
+
 In GitHub Actions, run **Build GitHub Release** on the desired revision. Confirm the exact TOC version and choose draft, prerelease, or final. Draft is the default. Draft creates a GitHub release only; prerelease uploads the same ZIP to CurseForge as Beta; final uploads it as Release. Existing version tags are rejected, including the already published v1.1.0.
 
 Configure repository Actions secret `CURSEFORGE_API_TOKEN` with your CurseForge upload token. GitHub authentication uses the workflow token. GitHub secrets cannot be copied out of FafnyirTools; add the token directly to this repository. No secrets belong in source control.
 
-Update `docs/RELEASE-NOTES.txt`, CHANGELOG.md, and the TOC together when a new version is authorized. Review supported game version names in the workflow when updating Interface metadata. Current upload targets are 12.1.0 and 1.60.1, matching the supplied TOC; this does not establish in-game compatibility.
+Update `docs/RELEASE-NOTES.txt`, CHANGELOG.md, and the TOC together when a new version is authorized. Review supported game version names in the workflow when updating Interface metadata. Current upload targets are 12.1.5 and 1.60.1, matching the current TOC; this does not establish in-game compatibility.
 
 If GitHub publishing succeeds but CurseForge fails, recover the exact ZIP from that GitHub release and upload it to CurseForge; do not rerun the release job and overwrite a tag.
 
