@@ -16,3 +16,5 @@ Release: v1.1.1 final published on 2026-10-03 from commit 05eb40e. GitHub releas
 In-game verification: user confirmed v1.1.1 works without errors on 2026-10-03. Game client version and individual media checks were not specified.
 
 Release preparation — 2026-10-14: user requested a final release for the 120105 TOC update. Version advanced to v1.1.2; Forever 16001 and all media retained. CurseForge metadata targets 12.1.5 and 1.60.1. Offline checks passed; no new in-game confirmation.
+
+Release completed — 2026-10-14: v1.1.2 final published from caca687. Workflow 38547148574 passed, including GitHub release and CurseForge upload file 9171402. ZIP: FafnyirMedia_v1.1.2_caca687.zip. Local checks and package verification passed.
